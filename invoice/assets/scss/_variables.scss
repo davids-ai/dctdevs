@@ -1,0 +1,92 @@
+.theme-color2 {
+  --theme-color: #e22454;
+}
+
+.text-color {
+  color: #6d6d6d;
+}
+
+$black: #000;
+$black1: #212529;
+$gray: #c7c7c5;
+$gray-light: #ddd;
+$white: #fff;
+$light-blue: #eff2f7;
+$theme-font-color: rgb(35, 35, 35);
+$dark-color: #1d1d1d;
+$font-dark: rgba($theme-font-color, 0.65);
+$font-dark-30: rgba($theme-font-color, 1);
+$rating-color: #facc21;
+$font-light: #7e7e7e;
+$light-button: #fefefe;
+$demo1-bg: #f0f3f8;
+$border-color: #ced4da;
+$darksilver: #696969;
+$lightsilver: #f8f8f8;
+$theme-color: #7520dd;
+$theme-light-color: #e3ddf4;
+$red: #ff0000;
+$lightgreen: #8fbc8f;
+$yellow: #ffa202;
+$background-color: #f7f7f7;
+$light-text: #38383899;
+$green: #009c00;
+$light-theme-color: #eff3f7;
+$red-40: rgba(255, 0, 0, 0.4);
+$red: #ff0000;
+$demo-4: #e87316;
+$demo-light-2: #efdee7;
+$demo-light-4: #eadfd5;
+$light-demo-4: #eaeaea;
+$light-demo-5: #fff4f8;
+$theme-color-5: #de4246;
+$demo-light-5: #eee1e6;
+$light-demo-6: #f0f8f0;
+$light-demo-7: #f0f7f0;
+$success__primary: #3dc480;
+$success__secondary: #b8babb;
+
+$black-20: rgba(35, 35, 35, 0.2);
+$black-40: rgba(35, 35, 35, 0.4);
+$black1-70: rgba(35, 35, 35, 0.7);
+$black1-80: rgba(35, 35, 35, 0.8);
+$theme-color1: var(--theme-color);
+$orange1: #ec7a1f;
+$green1: #df4246;
+$pink: #7520dd;
+$pink-gradient: linear-gradient(-23deg, #490c92 0%, #7b23e9 100%);
+$yellow-gradient: linear-gradient(143deg, #f8a073 0%, #ff9600 100%);
+$red-gradient: linear-gradient(160deg, #a11d19 0%, #9d1c1e 100%);
+$blue-gradient: linear-gradient(119deg, #0079db 0%, #001265 100%);
+$red-50: rgba(255, 0, 0, 0.2);
+$pink1: #df0f88;
+$elec3: #f0f3f8;
+$fashion1: #e22454;
+$fashion2: #e02453;
+$fashion-20: rgba($fashion1, 0.2);
+$img-bg: #eaeaea;
+$subs: #223645;
+$rating: #facc20;
+
+// font family
+$font_0: Rubik;
+$font_1: sans-serif;
+$font-awesome: "Font Awesome 5 free";
+
+$min-breakpoints: ( // md: 768,
+  lg: 992px,
+  xl: 1200px,
+  2xl: 1366px,
+  // 3xl: 1460px,
+);
+
+$max-breakpoints: (2xs: 360px,
+  xs: 480px,
+  sm: 575px,
+  md: 767px,
+  lg: 991px,
+  xl: 1199px,
+  2xl: 1366px,
+  3xl: 1460px,
+  4xl: 1660px,
+);
