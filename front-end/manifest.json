@@ -1,12 +1,12 @@
 {
-  "name": "Voxo",
-  "short_name": "Voxo",
+  "name": "DCT",
+  "short_name": "DCT",
   "lang": "en-US",
   "start_url": ".",
   "display": "standalone",
   "background_color": "white",
   "theme_color": "#e22454",
-  "description": "Voxo app",
+  "description": "DCT app",
   "icons": [
     {
       "src": "assets/images/favicon/2-48.png",

@@ -26,7 +26,7 @@ function style() {
 function watch() {
   browserSync.init({
     server: {
-      proxy: "localhost/voxo/html/index.html"
+      proxy: "localhost/DCT/html/front-end/index.html"
     }
   });
   gulp.watch("assets/scss/**/*.scss", style);

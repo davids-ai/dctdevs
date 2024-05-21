@@ -1,7 +1,7 @@
 /*-----------------------------------------------------------------------------------
 
- Template Name:Voxo
- Template URI: themes.pixelstrap.com/Voxo
+ Template Name:DCT
+ Template URI: themes.pixelstrap.com/DCT
  Description: This is Ecommerce website
  Author: Pixelstrap
  Author URI: https://themeforest.net/user/pixelstrap
