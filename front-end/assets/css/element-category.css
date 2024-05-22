@@ -4071,45 +4071,66 @@ header .main-navbar {
     .category-style-2 .category-content span {
       font-weight: 500; }
 
-.category-style-3 .category-image-fruit {
-  position: relative;
-  padding-bottom: 50px;
-  width: 90%; }
-  .category-style-3 .category-image-fruit img {
-    width: 100%; }
-  @media (max-width: 360px) {
-    .category-style-3 .category-image-fruit {
-      padding-bottom: 30px; } }
-  .category-style-3 .category-image-fruit .category-contain {
-    position: absolute;
-    bottom: 0;
-    right: 0; }
-    .category-style-3 .category-image-fruit .category-contain img {
-      width: 100%; }
-      [dir="rtl"] .category-style-3 .category-image-fruit .category-contain img {
-        margin-right: auto; }
-      @media (max-width: 767px) {
-        .category-style-3 .category-image-fruit .category-contain img {
-          margin-left: auto; } }
-  .category-style-3 .category-image-fruit .category-text {
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    color: #fff;
-    color: white;
-    top: 20px;
-    left: 30px; }
-    [dir="rtl"] .category-style-3 .category-image-fruit .category-text {
-      left: unset;
-      right: 30px;
-      text-align: right; }
-    .category-style-3 .category-image-fruit .category-text h2 {
-      font-size: calc(16px + (25 - 16) * ((100vw - 320px) / (1920 - 320)));
-      margin-bottom: 2px;
-      font-weight: 900; }
-    .category-style-3 .category-image-fruit .category-text h5 {
-      font-size: calc(13px + (16 - 13) * ((100vw - 320px) / (1920 - 320))); }
-
+      .category-box {
+        border: 1px solid #000; /* Borde negro */
+        padding: 10px;
+        margin: 10px;
+        text-align: center; /* Centrar el contenido */
+        background-color: #fff; /* Fondo blanco para el contenido */
+      }
+      
+      .category-box {
+        border: 1px solid #000; /* Borde negro */
+        padding: 0;
+        margin: 10px;
+        background-color: #fff; /* Fondo blanco */
+        overflow: hidden; /* Asegura que el contenido no se desborde */
+      }
+      
+      .category-image-fruit img {
+        width: 100%;
+        height: auto;
+      }
+      
+      .category-text-box {
+        background-color: #333; /* Fondo negro claro */
+        color: #fff; /* Texto blanco */
+        padding: 10px;
+        text-align: left; /* Alinear el texto a la izquierda */
+      }
+      
+      .category-text h2, .category-text h5 {
+        margin: 0;
+        padding: 5px 0;
+      }
+      
+      .category-text h2 {
+        font-size: calc(16px + (25 - 16) * ((100vw - 320px) / (1920 - 320)));
+        font-weight: 900;
+      }
+      
+      .category-text h5 {
+        font-size: calc(13px + (16 - 13) * ((100vw - 320px) / (1920 - 320)));
+        font-weight: 400;
+      }
+      
+      .share-icons {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        justify-content: center; /* Centrar los íconos */
+        margin-top: 10px;
+      }
+      
+      .share-icons li {
+        margin: 0 5px;
+      }
+      
+      .share-icons li a img {
+        width: 24px; /* Tamaño uniforme para los íconos */
+        height: auto;
+      }
+      
 /**=====================
      product css start
 ==========================**/
