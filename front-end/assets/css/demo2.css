@@ -1300,6 +1300,18 @@ span {
   padding: 8px 16px;
   font-weight: 400; }
 
+.disabled-btn {
+  background-color: #dddddd; /* Color de fondo gris para indicar que está deshabilitado */
+  color: #666666; /* Color de texto gris oscuro */
+  cursor: not-allowed; /* Cambia el cursor a 'no permitido' */
+  pointer-events: none; /* Deshabilita cualquier evento de puntero */
+  text-decoration: none; /* Elimina cualquier subrayado que pueda aparecer */
+  display: inline-block; /* Permite ajustar el ancho y el alto del botón */
+  padding: 10px 20px; /* Ajusta el relleno del botón */
+  border-radius: 5px; /* Redondea las esquinas del botón */
+  opacity: 0.7; /* Reduce la opacidad para indicar que está deshabilitado */
+}
+
 .default-white {
   background-color: #fff;
   border-radius: 0; }
