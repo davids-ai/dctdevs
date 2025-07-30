@@ -4,41 +4,55 @@ const autoprefixer = require("gulp-autoprefixer");
 const sourcemaps = require("gulp-sourcemaps");
 const browserSync = require("browser-sync").create();
 const historyFallback = require("connect-history-api-fallback");
+const del = require("del");
 
-// Compilar SCSS a dist
-function style() {
-  return gulp
-    .src("assets/scss/**/*.scss", { sourcemaps: true })
+// 🔹 Compilar SCSS para DEV (en ./assets/css)
+function styleDev() {
+  return gulp.src("assets/scss/**/*.scss", { sourcemaps: true })
     .pipe(sourcemaps.init())
-    .pipe(
-      sass({ outputStyle: 'compressed' }).on("error", sass.logError)
-    )
+    .pipe(sass({ outputStyle: 'compressed' }).on("error", sass.logError))
     .pipe(autoprefixer("last 2 versions"))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest("dist/assets/css"))
+    .pipe(gulp.dest("assets/css"))
     .pipe(browserSync.stream());
 }
 
-// Copiar HTML a dist
-function html() {
+// 🔹 Compilar SCSS para BUILD (en ./dist/assets/css)
+function styleBuild() {
+  return gulp.src("assets/scss/**/*.scss")
+    .pipe(sass({ outputStyle: 'compressed' }).on("error", sass.logError))
+    .pipe(autoprefixer("last 2 versions"))
+    .pipe(gulp.dest("dist/assets/css"));
+}
+
+// 🔹 Copiar HTML
+function copyHtml() {
   return gulp.src("front-end/*.html")
     .pipe(gulp.dest("dist"));
 }
 
-// Watch + servidor
-function watch() {
+// 🔹 Eliminar carpeta dist antes del build
+function clean() {
+  return del(["dist"]);
+}
+
+// 🔹 Servidor de desarrollo con watch
+function watchFiles() {
   browserSync.init({
     server: {
-      baseDir: "dist",
-      index: "index.html",
+      baseDir: "./",
+      index: "front-end/index.html",
       middleware: [historyFallback()]
     }
   });
 
-  gulp.watch("assets/scss/**/*.scss", style);
-  gulp.watch("front-end/*.html", html).on("change", browserSync.reload);
+  gulp.watch("assets/scss/**/*.scss", styleDev);
+  gulp.watch("front-end/*.html").on("change", browserSync.reload);
+  gulp.watch("assets/css/*.css").on("change", browserSync.reload);
 }
 
-// Tareas
-gulp.task("build", gulp.parallel(style, html));
-gulp.task("default", gulp.series("build", watch));
+// 🔹 Exportar tareas
+exports.styleDev = styleDev;
+exports.watch = watchFiles;
+exports.build = gulp.series(clean, gulp.parallel(styleBuild, copyHtml));
+exports.default = gulp.series(styleDev, watchFiles);
