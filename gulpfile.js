@@ -3,17 +3,15 @@ const sass = require("gulp-sass")(require('sass'));
 const autoprefixer = require("gulp-autoprefixer");
 const sourcemaps = require("gulp-sourcemaps");
 const browserSync = require("browser-sync").create();
-const historyFallback = require("connect-history-api-fallback"); // Importa el middleware
+const historyFallback = require("connect-history-api-fallback");
 
-// Función para compilar SCSS a CSS
+// Compilar SCSS a CSS
 function style() {
   return gulp
     .src("assets/scss/**/*.scss", { sourcemaps: true })
     .pipe(sourcemaps.init())
     .pipe(
-      sass({
-        outputStyle: 'compressed'
-      }).on("error", sass.logError)
+      sass({ outputStyle: 'compressed' }).on("error", sass.logError)
     )
     .pipe(autoprefixer("last 2 versions"))
     .pipe(sourcemaps.write('.'))
@@ -21,13 +19,13 @@ function style() {
     .pipe(browserSync.stream());
 }
 
-// Función para observar cambios
+// Servidor + Watch
 function watch() {
   browserSync.init({
     server: {
-      baseDir: "./", // Directorio base del servidor
-      index: "index.html", // Archivo de entrada principal
-      middleware: [historyFallback()] // Middleware para redirigir todas las solicitudes a index.html
+      baseDir: "./",
+      index: "index.html",
+      middleware: [historyFallback()]
     }
   });
 
@@ -36,8 +34,12 @@ function watch() {
   gulp.watch("assets/css/*.css").on("change", browserSync.reload);
 }
 
+// Tareas exportadas
 exports.style = style;
 exports.watch = watch;
 
-const build = gulp.parallel(style, watch);
-gulp.task("default", build);
+// Tarea de desarrollo (por defecto)
+gulp.task("default", gulp.parallel(style, watch));
+
+// 🆕 Tarea para build (sin servidor)
+gulp.task("build", style);
