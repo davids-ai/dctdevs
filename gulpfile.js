@@ -4,7 +4,7 @@ const autoprefixer = require("gulp-autoprefixer");
 const sourcemaps = require("gulp-sourcemaps");
 const browserSync = require("browser-sync").create();
 const historyFallback = require("connect-history-api-fallback");
-const del = require("del");
+const { deleteAsync } = require('del');
 
 // 🔹 Compilar SCSS para DEV (en ./assets/css)
 function styleDev() {
@@ -33,7 +33,7 @@ function copyHtml() {
 
 // 🔹 Eliminar carpeta dist antes del build
 function clean() {
-  return del(["dist"]);
+  return deleteAsync(['dist']);
 }
 
 // 🔹 Servidor de desarrollo con watch
