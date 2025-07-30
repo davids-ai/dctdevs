@@ -5,7 +5,7 @@ const sourcemaps = require("gulp-sourcemaps");
 const browserSync = require("browser-sync").create();
 const historyFallback = require("connect-history-api-fallback");
 
-// Compilar SCSS a CSS
+// Compilar SCSS a dist
 function style() {
   return gulp
     .src("assets/scss/**/*.scss", { sourcemaps: true })
@@ -15,31 +15,30 @@ function style() {
     )
     .pipe(autoprefixer("last 2 versions"))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest("assets/css"))
+    .pipe(gulp.dest("dist/assets/css"))
     .pipe(browserSync.stream());
 }
 
-// Servidor + Watch
+// Copiar HTML a dist
+function html() {
+  return gulp.src("front-end/*.html")
+    .pipe(gulp.dest("dist"));
+}
+
+// Watch + servidor
 function watch() {
   browserSync.init({
     server: {
-      baseDir: "./",
+      baseDir: "dist",
       index: "index.html",
       middleware: [historyFallback()]
     }
   });
 
   gulp.watch("assets/scss/**/*.scss", style);
-  gulp.watch("front-end/*.html").on("change", browserSync.reload);
-  gulp.watch("assets/css/*.css").on("change", browserSync.reload);
+  gulp.watch("front-end/*.html", html).on("change", browserSync.reload);
 }
 
-// Tareas exportadas
-exports.style = style;
-exports.watch = watch;
-
-// Tarea de desarrollo (por defecto)
-gulp.task("default", gulp.parallel(style, watch));
-
-// 🆕 Tarea para build (sin servidor)
-gulp.task("build", style);
+// Tareas
+gulp.task("build", gulp.parallel(style, html));
+gulp.task("default", gulp.series("build", watch));
